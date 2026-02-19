@@ -1,0 +1,301 @@
+/* --- ASHA PANCHAL: EDITORIAL ART GALLERY --- */
+
+:root {
+    --bg-color: #F4F1EB; /* Warm Sand/Oatmeal */
+    --text-main: #1C1A17; /* Deep Charcoal */
+    --text-light: #5A5650;
+    --accent: #D94A3D; /* Artistic Terra Cotta / Red */
+    --card-bg: #FFFFFF;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-color); color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden; scroll-behavior: smooth;
+}
+
+/* --- GALLERY LOADER --- */
+.loader-wrapper {
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 10000;
+    display: flex; justify-content: center; align-items: center;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1); 
+}
+.loader-wrapper.slide-up { transform: translateY(-100%); }
+.loader-content { text-align: center; color: var(--text-main); }
+.loader-logo { font-family: var(--font-heading); font-size: 5rem; font-weight: 700; margin: 0 0 30px 0; letter-spacing: -2px; }
+.loader-bar-container { width: 250px; height: 1px; background-color: rgba(0, 0, 0, 0.1); margin: 0 auto 15px auto; overflow: hidden; }
+.loader-bar { width: 0%; height: 100%; background-color: var(--accent); transition: width 0.1s ease; }
+.loader-text { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-light); }
+
+/* --- FLOATING CV BUTTON --- */
+.floating-cv-btn {
+    position: fixed; bottom: 40px; right: 40px; z-index: 9999;
+    background-color: var(--text-main); color: var(--card-bg);
+    border-radius: 50px; padding: 15px 30px;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; font-weight: 500; font-size: 1rem;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.floating-cv-btn:hover { background-color: var(--accent); transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(217, 74, 61, 0.3); }
+.btn-icon { background: rgba(255,255,255,0.2); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+
+/* --- NAVBAR --- */
+.navbar { position: fixed; top: 0; width: 100%; padding: 30px 5%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, var(--bg-color) 60%, transparent); }
+.logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-main); }
+.nav-links { display: flex; gap: 40px; }
+.nav-links a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent); transition: width 0.3s; }
+.nav-links a:hover::after { width: 100%; }
+
+/* --- HERO SECTION --- */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 0; max-width: 1400px; margin: 0 auto; }
+.hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 50px; }
+.hero-text { flex: 1; max-width: 600px; }
+.eyebrow { font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 500; }
+.hero-text h1 { font-family: var(--font-heading); font-size: 6rem; line-height: 1.1; margin: 0 0 30px 0; font-weight: 400; }
+.hero-text h1 i { color: var(--text-light); font-style: italic; }
+.objective { font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 40px; border-left: 2px solid var(--accent); padding-left: 20px; }
+.skills-list { font-family: var(--font-heading); font-size: 1.2rem; font-style: italic; color: var(--text-main); word-spacing: 5px; }
+
+/* Arch Image Frame */
+.hero-visual { flex: 1; display: flex; justify-content: flex-end; position: relative; }
+.arch-frame { width: 400px; height: 550px; background: var(--card-bg); padding: 15px; border-radius: 200px 200px 0 0; box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+.arch-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 185px 185px 0 0; }
+
+.experience-stamp { position: absolute; bottom: 50px; left: 50px; width: 120px; height: 120px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; animation: spin-slow 20s linear infinite; }
+.stamp-circle { display: flex; flex-direction: column; align-items: center; font-family: var(--font-heading); font-size: 1.2rem; line-height: 1.2; text-align: center; }
+@keyframes spin-slow { 100% { transform: rotate(360deg); } }
+
+/* --- NEW: VERTICAL MASONRY PORTFOLIO --- */
+.portfolio-section { 
+    padding: 120px 5%; 
+    background-color: var(--text-main); 
+    color: var(--bg-color); 
+}
+.portfolio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.portfolio-header { 
+    margin-bottom: 60px; 
+    text-align: center; 
+}
+.portfolio-header h2 { 
+    font-family: var(--font-heading); 
+    font-size: 4rem; 
+    margin: 0 0 10px 0; 
+    font-weight: 400; 
+}
+.portfolio-header p {
+    color: #A09E9B;
+    font-size: 1.1rem;
+}
+
+/* The CSS Masonry Magic */
+.masonry-grid {
+    column-count: 3; /* Creates 3 columns */
+    column-gap: 30px; /* Space between columns */
+}
+
+.masonry-item {
+    break-inside: avoid; /* Prevents images from breaking across columns */
+    margin-bottom: 30px; /* Space below items */
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.masonry-item:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Dark elegant overlay that slides up */
+.item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(28, 26, 23, 0.95), rgba(28, 26, 23, 0.2));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.masonry-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.item-overlay h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin: 0 0 5px 0;
+    color: #FFF;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.item-overlay p {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease 0.1s; /* Slight delay for staggered effect */
+}
+
+.masonry-item:hover .item-overlay h3,
+.masonry-item:hover .item-overlay p {
+    transform: translateY(0);
+}
+
+
+/* --- RESUME / EDITORIAL GRID --- */
+.resume-section { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
+.resume-header h2 { font-family: var(--font-heading); font-size: 4rem; font-weight: 400; margin: 0 0 60px 0; text-align: center; }
+.resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.block-title { font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); border-bottom: 1px solid var(--text-light); padding-bottom: 15px; margin-bottom: 40px; }
+
+.resume-item { margin-bottom: 40px; }
+.r-date { font-family: var(--font-heading); font-style: italic; color: var(--text-light); margin: 0 0 5px 0; }
+.r-role { font-size: 1.5rem; margin: 0 0 5px 0; font-weight: 500; }
+.r-company { font-size: 1rem; color: var(--text-light); margin: 0; }
+
+/* --- FOOTER --- */
+.site-footer { padding: 100px 5% 50px; background: var(--card-bg); text-align: center; }
+.site-footer h2 { font-family: var(--font-heading); font-size: 4.5rem; font-weight: 400; margin: 0 0 40px 0; }
+.contact-links { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
+.contact-links a, .contact-links span { color: var(--text-main); text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+.contact-links a:hover { color: var(--accent); }
+.contact-links i { color: var(--accent); }
+
+.footer-divider { width: 100%; height: 1px; background: #E0E0E0; margin-bottom: 40px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; color: var(--text-light); font-size: 0.9rem; }
+.footer-bottom p { margin: 5px 0; }
+
+/* --- UTILS & RESPONSIVE --- */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+.reveal.fade-right { transform: translateX(40px); }
+.reveal.active { opacity: 1; transform: translate(0, 0); }
+
+@media (max-width: 1024px) {
+    .masonry-grid { column-count: 2; } /* 2 columns on tablets */
+}
+
+@media (max-width: 900px) {
+    .navbar { padding: 20px 5%; }
+    .nav-links { display: none; }
+    .hero-container { flex-direction: column; text-align: center; gap: 60px; padding-top: 50px; }
+    .hero-text h1 { font-size: 4rem; }
+    .objective { border-left: none; padding-left: 0; }
+    .arch-frame { width: 100%; max-width: 350px; height: 450px; }
+    .resume-grid { grid-template-columns: 1fr; gap: 40px; }
+    .portfolio-header h2, .resume-header h2, .site-footer h2 { font-size: 3rem; }
+    .contact-links { flex-direction: column; gap: 20px; align-items: center; }
+    .floating-cv-btn { bottom: 20px; right: 20px; padding: 12px 20px; }
+    .btn-text { display: none; } 
+    .masonry-grid { column-count: 1; } /* 1 column on phones */
+}
+/* --- NEW: IMAGE LIGHTBOX (FULLSCREEN VIEWER) --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(28, 26, 23, 0.95); /* Deep dark editorial background */
+    backdrop-filter: blur(10px);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    position: relative;
+    text-align: center;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.lightbox.active .lightbox-content img {
+    transform: scale(1); /* Smooth pop-in effect */
+}
+
+#lightbox-caption {
+    color: var(--card-bg);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #FFF;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 100001;
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Make Masonry Items clickable and add a Zoom icon on hover */
+.masonry-item { 
+    cursor: pointer; 
+}
+.item-overlay::after {
+    content: '\f00e'; /* FontAwesome Search-Plus icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease 0.2s;
+}
+.masonry-item:hover .item-overlay::after {
+    opacity: 1;
+    transform: translateY(0);
+}

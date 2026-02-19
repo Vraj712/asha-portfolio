@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Asha Mitul Panchal</title>
+    
+    <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%23D94A3D%22/><text x=%2250%%22 y=%2255%%22 font-family=%22serif%22 font-weight=%22bold%22 font-size=%2245%22 fill=%22%23FFF%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>AP</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- GLOBAL & VARIABLES --- */
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important; 
+            print-color-adjust: exact !important;
+        }
+
+        :root {
+            --bg-color: #F4F1EB;
+            --card-bg: #FFFFFF;
+            --text-main: #1C1A17;
+            --text-light: #5A5650;
+            --accent: #D94A3D;
+            --border: #E5E0D8;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0; 
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            display: flex; 
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* --- THE A4 SHEET --- */
+        .resume-sheet {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--card-bg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 35%;
+            background-color: #FAF8F5;
+            padding: 40px 30px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .profile-img {
+            width: 140px; 
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+            border: 3px solid var(--accent);
+            padding: 4px;
+            background: var(--card-bg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-heading {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 10px;
+            display: flex; 
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .info-text i { 
+            color: var(--accent); 
+            margin-top: 3px; 
+            flex-shrink: 0; 
+            width: 14px;
+            text-align: center;
+        }
+
+        .info-text strong {
+            color: var(--text-main);
+            flex-shrink: 0; 
+            flex-basis: 85px; 
+        }
+
+        .info-text span {
+            flex: 1;
+            overflow-wrap: break-word; 
+            word-wrap: break-word;
+        }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+        .tag {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            color: var(--text-main);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            width: 65%;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+        }
+
+        .header-block { margin-bottom: 35px; }
+        .header-block h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+        .header-block h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin: 0; font-weight: 400;
+        }
+
+        .objective {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent);
+            margin-bottom: 35px;
+        }
+
+        .item-block { margin-bottom: 20px; }
+        .item-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 3px 0;
+            color: var(--text-main);
+        }
+        .item-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .declaration {
+            margin-top: auto; 
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+        .signature {
+            text-align: right;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: var(--text-main);
+        }
+
+        /* --- FLOATING CONTROLS --- */
+        .save-btn-container {
+            position: fixed; bottom: 40px; right: 40px;
+            display: flex; gap: 15px;
+            z-index: 1000;
+        }
+        .btn {
+            background-color: var(--text-main);
+            color: var(--card-bg);
+            border: none; border-radius: 50px;
+            padding: 15px 30px; font-family: var(--font-body);
+            font-size: 1rem; font-weight: 500; cursor: pointer;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn:hover { background-color: var(--accent); transform: translateY(-3px); color: white; }
+        .btn-secondary { background-color: var(--card-bg); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-secondary:hover { background-color: #f0f0f0; color: var(--text-main); }
+
+        /* =========================================
+           STRICT PRINT RULES (THE FIX)
+           ========================================= */
+        @media print {
+            @page { 
+                margin: 0; 
+                size: A4 portrait; 
+            }
+            body { 
+                padding: 0; 
+                margin: 0; 
+                background: white !important;
+            }
+            
+            /* FORCE SIDE-BY-SIDE LAYOUT */
+            .resume-sheet {
+                display: flex !important;
+                flex-direction: row !important;
+                width: 210mm !important; 
+                height: 297mm !important; 
+                max-height: 297mm !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                page-break-after: avoid !important;
+            }
+
+            /* FORCE SIDEBAR STYLES */
+            .sidebar { 
+                display: flex !important;
+                width: 35% !important;
+                height: 297mm !important;
+                background-color: #FAF8F5 !important; 
+                border-right: 1px solid #E5E0D8 !important; 
+                padding: 30px 25px !important; 
+            }
+
+            /* FORCE MAIN CONTENT STYLES */
+            .main-content {
+                display: flex !important;
+                width: 65% !important;
+                height: 297mm !important;
+                padding: 30px 35px !important;
+                background-color: #FFFFFF !important;
+            }
+            
+            /* HIDE BUTTONS */
+            .save-btn-container { display: none !important; }
+            
+            /* ADJUST SIZING SO IT DOESN'T SPILL TO PAGE 2 */
+            .profile-img { width: 130px !important; height: 130px !important; margin-bottom: 20px !important; box-shadow: none !important; }
+            .section-heading { margin: 15px 0 10px 0 !important; }
+            .info-text { margin-bottom: 8px !important; }
+            .header-block { margin-bottom: 25px !important; }
+            .objective { margin-bottom: 25px !important; font-size: 1rem !important; }
+            .item-block { margin-bottom: 15px !important; }
+        }
+
+        /* =========================================
+           MOBILE VIEW (ONLY on screens, NEVER in print)
+           ========================================= */
+        @media screen and (max-width: 768px) {
+            .resume-sheet { flex-direction: column; width: 100%; min-height: auto; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+            .main-content { width: 100%; }
+            .save-btn-container { bottom: 20px; right: 20px; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="save-btn-container">
+        <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Studio</a>
+        <button class="btn" onclick="window.print()"><i class="fas fa-download"></i> Save CV</button>
+    </div>
+
+    <div class="resume-sheet">
+        
+        <aside class="sidebar">
+            
+            <div class="profile-container">
+                <img src="Asha.jpeg" alt="Asha Mitul Panchal" class="profile-img">
+            </div>
+
+            <div class="section-heading">Contact</div>
+            <div class="info-text"><i class="fas fa-envelope"></i> <span>ashapanchal0206@gmail.com</span></div>
+            <div class="info-text"><i class="fas fa-phone"></i> <span>9737112514</span></div>
+            <div class="info-text"><i class="fas fa-map-marker-alt"></i> <span>433, Hariom Nagar, Nana bajar, v.v. nagar ANAND, Gujarat, 388120</span></div>
+
+            <div class="section-heading">Personal Details</div>
+            <div class="info-text"><strong>Date of Birth:</strong> <span>6/2/1993</span></div>
+            <div class="info-text"><strong>Gender:</strong> <span>Female</span></div>
+            <div class="info-text"><strong>Nationality:</strong> <span>Indian</span></div>
+            <div class="info-text"><strong>Marital Status:</strong> <span>Married</span></div>
+            <div class="info-text"><strong>Languages:</strong> <span>Gujarati, Hindi, English</span></div>
+
+            <div class="section-heading">Skills & Expertise</div>
+            <div class="tag-list">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Computer Operations</span>
+                <span class="tag">Accounting</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Time Management</span>
+            </div>
+
+            <div class="section-heading">Strengths & Interests</div>
+            <div class="info-text"><strong>Strengths:</strong> <span>Self motivation, team work</span></div>
+            <div class="info-text"><strong>Interests:</strong> <span>Anand</span></div>
+            <div class="info-text"><strong>Hobbies:</strong> <span>Reading, speaking of the debate</span></div>
+        </aside>
+
+        <main class="main-content">
+            <div class="header-block">
+                <h1>Asha Mitul Panchal</h1>
+                <h2>Graphic Designer & Operator</h2>
+            </div>
+
+            <div class="objective">
+                "To work with best of my abilities and skills in order to benefit my organization also to be better other in this competitive Time an influential position in the organization."
+            </div>
+
+            <div class="section-heading" style="margin-top: 0;">Experience</div>
+            
+            <div class="item-block">
+                <div class="item-date">Jan 2017 - Present</div>
+                <h3 class="item-title">Computer Operator</h3>
+                <p class="item-subtitle">Lilliput Pre School</p>
+            </div>
+
+            <div class="item-block">
+                <div class="item-date">3 Years</div>
+                <h3 class="item-title">Computer Graphics Designing</h3>
+                <p class="item-subtitle">Ambica Graphics</p>
+            </div>
+
+            <div class="section-heading">Education</div>
+
+            <div class="item-block">
+                <div class="item-date">2013 • Score: 44%</div>
+                <h3 class="item-title">B.Com</h3>
+                <p class="item-subtitle">Sardar Patel University</p>
+            </div>
+
+            <div class="item-block">
+                <div class="item-date">2010 • Score: 49%</div>
+                <h3 class="item-title">H.S.C</h3>
+                <p class="item-subtitle">G.S.H.E.B</p>
+            </div>
+
+            <div class="item-block">
+                <div class="item-date">2008 • Score: 67%</div>
+                <h3 class="item-title">S.S.C</h3>
+                <p class="item-subtitle">G.S.E.B.</p>
+            </div>
+
+            <div class="declaration">
+                "I hereby declare that all the above information is true to best of my knowledge"
+                <div class="signature">Asha Mitul Panchal</div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
